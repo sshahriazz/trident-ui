@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trident-ui/react": ["libs/trident/src/index.ts"]
+      "@tridentui/react": ["libs/packages/react/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/packages/react/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/packages/react",
+        "tsConfig": "libs/packages/react/tsconfig.lib.json",
+        "project": "libs/packages/react/package.json",
+        "entryFile": "libs/packages/react/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/packages/react/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/packages/react/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/packages/react"],
+      "options": {
+        "jestConfig": "libs/packages/react/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/react",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/packages/react/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/react",
+        "outputPath": "dist/storybook/packages-react",
+        "config": {
+          "configFolder": "libs/packages/react/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  }
+}
