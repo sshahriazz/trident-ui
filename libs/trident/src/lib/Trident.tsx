@@ -6,7 +6,7 @@ export interface TridentProps {}
 export function Trident(props: TridentProps) {
   return (
     <div className={styles['container']}>
-      <h1>Welcome to Trident!</h1>
+      <h1>Welcome to Trident! 1</h1>
     </div>
   );
 }
